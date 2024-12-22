@@ -16,7 +16,7 @@ def build_datatable(data, filename):
     st.download_button(label='Clique aqui para baixá-lo', data=converted, file_name=filename, mime='text/csv')
 
 async def get_binary_version(element, header, fields_to_search, empty_obj, session):
-    url = f'http://34.218.70.208:99/json-logs/get-all-by-dev-eui?devEui={element}'
+    url = f'{"env.get-all-devuis"}?devEui={element}'
     async with session.get(url, headers=header) as r:
         for field in fields_to_search:
             try:
@@ -32,7 +32,7 @@ async def get_binary_version(element, header, fields_to_search, empty_obj, sessi
 
 async def get_device_info(element, project, info_type, session,
                     empty_obj, fields_to_search, header):
-    fix_url_part = 'http://34.218.70.208:99/'
+    fix_url_part = 'env.base-url'
     url_mapping = {
         'serial': f'{fix_url_part}{project}/get-by-serial?serial={element}',
         'deveui': f'{fix_url_part}{project}/?devEui={element}',

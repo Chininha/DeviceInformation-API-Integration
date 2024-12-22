@@ -23,7 +23,7 @@ with open('style.css', 'r') as style:
     st.markdown(f'<style>{style.read()}</style>', unsafe_allow_html=True)
 
 headers_to_gen = {'Authorization': f'{st.secrets.api_credentials.token}'}
-token = generate_token.generate_token('http://34.218.70.208:99/login', data=payload, headers=headers)
+token = generate_token.generate_token('env.url.login', data=payload, headers=headers)
 headers_to_requis = {'Authorization': token}
 
 devices_file = st.file_uploader(label='Escolha um arquivo', key='device file')
